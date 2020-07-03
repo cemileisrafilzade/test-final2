@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {
-    View,Text,Image,StyleSheet,TouchableOpacity
+    View,Text,Image,StyleSheet,TouchableOpacity, ScrollView
 } from 'react-native'
 import { IMAGES } from '../styles/images'
 import { COLORS } from '../styles/color'
@@ -17,37 +17,36 @@ export const  SignUp = ({navigation}) =>{
   
     const [isAgree,setIsAgree] = useState(false);
     const toggleIsAgree = () => setIsAgree(v=>!v);
-
+    const submitHandler = () => {
+        navigation.navigate("HomeStack");
+      };
 
     return(
-         <View style={styles.container}> 
-        <View style={{flexDirection:"row",justifyContent:'space-around',
-    alignItems:'center'}}> 
+        <View style={styles.container}> 
+        <View style={{flexDirection:"row",justifyContent:'space-between', alignItems:'center'}}> 
             <BackBtn   onPress={() => navigation.goBack()}/>
-           <CustomText style={styles.logintxt}>Sign Up</CustomText>
-           </View>
+            <CustomText weight = "semi" style={styles.signUptxt}>Sign Up</CustomText>
+        </View>
          
-         <View style={styles.wrapper}>
-         
-<CustomField   title='username'  />
-<CustomField title = 'e-mail'/>
-<CustomField title = 'password'/>
-<CustomField title = 'confirm password'/>
-
-        
-<View style={styles.checkboxview}>
+        <View style={styles.wrapper}>
+            <CustomField title="username"  />
+            <CustomField title = 'e-mail'/>
+            <CustomField title = 'password'/>
+            <CustomField title = 'confirm password'/> 
+        <View style={styles.checkboxview}>
          <TouchableOpacity onPress={toggleIsAgree}>
              <View style={[styles.checkbox,{
                  backgroundColor: isAgree?COLORS.PRIMARY:COLORS.FIELD_BG,
              }]}/>
          </TouchableOpacity>
-         <Text>agree with </Text>
+          <CustomText>agree with </CustomText>
              <TouchableOpacity
             //   onPress={Link} 
             >
-             <Text style={{fontWeight:'bold'}}>  Terms and Conditions</Text></TouchableOpacity>
+             <CustomText  weight = "semi">Terms and Conditions</CustomText>
+             </TouchableOpacity>
          </View>
-<CustomBtnYellow title='Create'/>
+         <CustomBtnYellow onPress = {submitHandler} title='Create'/>
          </View>
          
          </View>
@@ -62,15 +61,17 @@ container:{
     justifyContent:'center',
     backgroundColor:COLORS.BG_SIGN_UP
 },
-logintxt:{
+signUptxt:{
     color:COLORS.BUTTON_TEXT,
-    fontSize:45,
-    paddingVertical:15
+    fontSize:35,
+    paddingVertical:15,
+    marginBottom: 15,
 },
 wrapper:{
     backgroundColor:COLORS.BUTTON_TEXT,
     borderRadius:40,
-    paddingVertical:50,
+    height: "75%",
+    justifyContent: "center",
     alignItems:"center",
     width:"90%"
 },

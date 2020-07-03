@@ -14,18 +14,24 @@ import { BackBtn } from '../components/BackBtn'
 
 
 export const  Login = ({navigation}) =>{
+    const submitHandler = () => {
+        navigation.navigate("HomeStack");
+      };
+  
+  
      return(
          <View style={styles.container}>  
-         <View style={{flexDirection:"row", alignItems:'center'}}> 
-             <BackBtn  
-             onPress={() => navigation.goBack()}   />
-           <CustomText style={styles.logintxt}>LOGIN</CustomText></View>
+         <View style={{flexDirection:"row",justifyContent:'space-between', alignItems:'center'}}> 
+            <BackBtn  
+             onPress={() => navigation.goBack()}   
+            />
+           <CustomText weight = "semi" style={styles.logintxt}>Log In</CustomText></View>
          <View style={styles.wrapper}>
-             <Image style={styles.chefimg} source={ICONS.chef}/>
-         <CustomText style={styles.cookeasytxt}>cook Easy</CustomText>
-<CustomField title='e-mail'/>
-<CustomField title='password'/>
-<CustomBtnYellow title='log in'/>
+            <Image style={styles.chefimg} source={ICONS.chef}/>
+            <CustomText weight = "bold" style={styles.cookeasytxt}>cookEasy</CustomText>
+            <CustomField title='e-mail'/>
+            <CustomField title='password'/>
+            <CustomBtnYellow onPress = {submitHandler} title='log in'/>
          </View>
          
          </View>
@@ -42,13 +48,15 @@ container:{
 },
 logintxt:{
     color:COLORS.BUTTON_TEXT,
-    fontSize:45,
-    paddingVertical:15
+    fontSize:35,
+    paddingVertical:15,
+    marginBottom: 15,
 },
 wrapper:{
     backgroundColor:COLORS.BUTTON_TEXT,
     borderRadius:40,
-    paddingVertical:50,
+    height: "75%",
+    justifyContent: "center",
     alignItems:"center",
     width:"90%"
 },
@@ -59,6 +67,6 @@ chefimg:{
 cookeasytxt:{
     color:COLORS.BG_LOGIN,
     fontSize:48,
-    fontWeight:'bold'
+    marginBottom: 30,
 }
  })

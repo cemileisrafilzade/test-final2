@@ -6,7 +6,11 @@ import { ICONS } from "../styles/icon";
 export const BackBtn = ({ iconName, onPress, side }) => (
   <TouchableOpacity
     style={[
-      styles.wrapper
+      styles.wrapper,
+      // {
+      //  marginLeft: 15,
+      // },
+
     ]}
     onPress={onPress}
   >
@@ -18,7 +22,8 @@ const styles = StyleSheet.create({
   wrapper: {
     width: 22,
     height: 22,
-    right:"100%"
+    right: "90%",
+    marginBottom: 10
   },
   icon: {
     width: "100%",

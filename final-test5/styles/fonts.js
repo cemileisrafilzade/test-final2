@@ -1,3 +1,4 @@
+import * as Font from "expo-font";
 
 import MontserratRegular from "../assets/fonts/Montserrat-Regular.ttf";
 import MontserratMedium from "../assets/fonts/Montserrat-Medium.ttf";
